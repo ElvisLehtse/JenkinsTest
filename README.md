@@ -66,6 +66,11 @@ docker exec -it --user root jenkins-local bash
 apt-get update
 apt-get install -y docker.io
 ```
+### Install Maven inside your existing Jenkins container
+```
+apt-get update
+apt-get install -y maven
+```
 ### Add Jenkins user to Docker group
 ```
 usermod -aG docker jenkins

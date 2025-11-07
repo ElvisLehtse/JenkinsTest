@@ -8,7 +8,9 @@ pipeline {
         }
         stage('Build Jar') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                docker.image('maven:3.9.2-eclipse-temurin-21').inside {
+                    sh 'mvn clean package -DskipTests'
+                }
             }
         }
         stage('Build Docker Image') {
