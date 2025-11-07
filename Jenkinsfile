@@ -2,12 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo 'Building Docker image...'
-                script {
-                    sh 'docker build -t jenkinstest:latest .'
-                }
+                checkout scm
+            }
+        }
+        stage('Build Jar') {
+            steps {
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t jenkinstest:latest .'
             }
         }
     }
