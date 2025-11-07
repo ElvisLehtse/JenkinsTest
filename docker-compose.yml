@@ -1,0 +1,13 @@
+services:
+  JenkinsTest:
+    image: jenkinstest:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jenkins-test-container
+
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+    restart: unless-stopped
