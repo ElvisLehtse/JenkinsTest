@@ -89,5 +89,3 @@ exito
 ```
 docker exec -it --user jenkins jenkins-local docker ps
 ```
-
-TEST
