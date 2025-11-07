@@ -56,6 +56,11 @@ Run container:
 docker start -a jenkins-local
 ```
 
+Restart container:
+```
+docker restart -a jenkins-local
+```
+
 ## If the volume is removed, then run these in Powershell to install the Docker CLI for Jenkins docker container:
 ### Access container as root
 ```
