@@ -36,7 +36,7 @@ docker run -d `
 Open Docker in browser:   
 http://localhost:8081
 
-Require password:
+Require password (first time, if volume is removed):
 ```
 docker exec -it jenkins-local cat /var/jenkins_home/secrets/initialAdminPassword
 ```
@@ -46,7 +46,19 @@ Remove container:
 docker rm jenkins-local
 ```
 
-Remove volume:
+Remove volume (DO NOT REMOVE):
 ```
 docker volume rm jenkins_home
+```
+
+Run container:
+```
+docker start -a jenkins-local
+```
+
+If the volume is removed, then run these in Powershell to install the Docker CLI for Jenkins docker container:
+```
+docker exec -it --user root jenkins-local bash
+apt-get update
+apt-get install -y docker.io
 ```
