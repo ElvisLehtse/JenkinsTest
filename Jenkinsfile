@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
         stage('Checkout') {
             steps {
@@ -17,14 +16,18 @@ pipeline {
                 sh 'docker build -t jenkinstest:latest .'
             }
         }
+        stage('Run Docker Container') {
+            steps {
+                sh 'docker run -d --name jenkinstest -p 8080:8080 jenkinstest:latest'
+            }
+        }
     }
-
     post {
         success {
-            echo '✅ Build completed successfully!'
+            echo '✅ Pipeline completed successfully!'
         }
         failure {
-            echo '❌ Build failed!'
+            echo '❌ Pipeline failed!'
         }
     }
 }
